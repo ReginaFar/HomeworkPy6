@@ -29,12 +29,10 @@ print(my_func_2(float(input('Введите действительное пол�
 
 
 def my_func_new(x, y):
-    try:
-        if y < 0:
-            return pow(x, y)
-    except:
-        ValueError
-    return
+    if y < 0:
+        return pow(x, y)
+    else:
+        return 'Число введено неправильно!'
 
 
 print(my_func_new(float(input('Введите действительное положительное число:')),
