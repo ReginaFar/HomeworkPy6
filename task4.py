@@ -11,8 +11,7 @@ def my_func_1(x, y):
         return x ** y
 
 
-print(my_func_1(float(input('Введите действительное положительное число:')),
-                int(input('Введите целое отрицательное число:'))))
+my_func_1(2,-1)
 
 
 def my_func_2(x, y):
@@ -24,8 +23,7 @@ def my_func_2(x, y):
     return 1 / res
 
 
-print(my_func_2(float(input('Введите действительное положительное число:')),
-                int(input('Введите целое отрицательное число:'))))
+my_func_2(2,-1)
 
 
 def my_func_new(x, y):
@@ -35,5 +33,4 @@ def my_func_new(x, y):
         return 'Число введено неправильно!'
 
 
-print(my_func_new(float(input('Введите действительное положительное число:')),
-                  int(input('Введите целое отрицательное число:'))))
+my_func_new(2,-1)
