@@ -4,37 +4,56 @@
 
 from timeit import timeit
 
-print(timeit("my_func_1", setup="from task4 import my_func_1", number=1000000))
-print(timeit("my_func_2", setup="from task4 import my_func_2", number=1000000))
-print(timeit("my_func_new", setup="from task4 import my_func_new", number=1000000))
-
-"""
-При вводе чисел 2 и -1 получили следующие значения:
-
-"""
-
-# my_func_1 - 0.004352000076323748
-# my_func_2 - 0.0030260002240538597
-# my_func_new - 0.0021982002072036266
-
-"""
-В новой функции my_func_new использовала встроенную функцию возведения в степень,
-за счет этого уменьшилось время выполнения программмы.
- 
-"""
+# 1. Нахождение максимального элемента в списке:
 
 
-print(timeit("max_sum", setup="from task3 import max_sum", number=100000))
-print(timeit("max_sum_new", setup="from task3 import max_sum_new", number=100000))
-print(timeit("get_max", setup="from task3 import get_max", number=100000))
+def find_max(mas):
+    max_el = mas[0]
+    for i in range(len(mas)):
+        if mas[i] > max_el:
+            max_el = mas[i]
+    print(max_el)
 
-# max_sum - 0.00546270003542304
-# max_sum_new - 0.002946999855339527
 
-"""
-В новой функции max_sum_new при помощи функции min нашла минимальное из трех 
-чисел и при помощи функции remove удалила его из списка. Далее при помощи
-функции sum нашла сумму двух оставшихся элементов списка.За счет использования
-встроенных функций уменьшилось время выполнения программы.
+def find_max_new(mas):
+    max_el = max(mas)
+    print(max_el)
 
-"""
+
+find_max([100, 39, 25, 111])
+find_max_new([100, 39, 25, 111])
+
+print(timeit("find_max", globals=globals(), number=100000))
+print(timeit("find_max_new", globals=globals(), number=100000))
+
+
+# Получили следующие замеры:
+# find_max - 0.005072099999999996
+# find_max_new - 0.0024410999999999947
+# Функция find_max_new выполняется в два раза быстрее за счёт использования встроенной функции max
+
+# 2. Находим в списке числа, кратные 11
+
+def find_num(lst):
+    new_lst = []
+    for num in range(len(lst)):
+        if lst[num] % 11 == 0:
+            new_lst.append(lst[num])
+    print(new_lst)
+
+
+def find_num_new(lst):
+    new_lst = [num for num in lst if num % 11 == 0]
+    print(new_lst)
+
+
+find_num([190, 121, 20, 22, 1331])
+find_num_new([190, 121, 20, 22, 1331])
+
+print(timeit("find_num", globals=globals(), number=1000000))
+print(timeit("find_num_new", globals=globals(), number=1000000))
+
+# Получили следующие замеры:
+# 0.021680599999999998
+# 0.0158192
+# Функция find_num_new выполняется быстрее благодаря использования list comprehension
